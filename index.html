@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Objednávkový systém 1.0</h1>
+        <h2>Stoly</h2>
+        <div id="button-grid">
+            <!-- Generate the button grid dynamically using Flask -->
+            {% for row in range(rows) %}
+            <div class="row">
+                {% for col in range(cols) %}
+                {% set number = row * cols + col + 1 %}
+                {% if number in checked_indexes %}
+                <button type="submit" class="button checked" name="button" value="{{ number }}">{{ number }}</button>
+                {% else %}
+                <button type="submit" class="button" name="button" value="{{ number }}">{{ number }}</button>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <form method="POST">
+            <button type="submit">Vybrat</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('.button');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Toggle the 'checked' class on button click
+                    this.classList.toggle('checked');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurace U čtyř Banánů</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Restaurace U Čtyř Banánů</h1>
+    <h2>Objednávka</h2>
+    <form method="POST">
+        <input type="text" name="name" placeholder="Jméno">
+        <input type="date" name="date" placeholder="Datum">
+        <p></p>
+        <input type="number" name="pocetLidi" placeholder="Počet lidí">
+        <button type="submit">Submit</button>
+
+
+    </form>
+
+</body>
+</html>-->
+
