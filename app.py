@@ -30,7 +30,7 @@ class Objednavka(db.Model):
     stav_objednavky = db.Column(db.String(50))
     celkova_cena = db.Column(db.Float)
 
-#db.create_all()
+db.create_all()
     
 # Funkční vytvoření databáze pomocí pythonu
     
